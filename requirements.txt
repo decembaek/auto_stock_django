@@ -5,3 +5,6 @@ markdown
 openpyxl
 pandas
 pyarrow
+django-environ
+pylint-django
+python-dotenv
