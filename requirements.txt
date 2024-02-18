@@ -1,0 +1,7 @@
+mysqlclient
+django
+djangorestframework
+markdown
+openpyxl
+pandas
+pyarrow
