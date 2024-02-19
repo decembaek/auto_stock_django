@@ -20,7 +20,7 @@ class StockCodeModel(models.Model):
 
 
 class StockInfoModel(models.Model):
-    stock_code = models.ForeignKey(StockCodeModel, on_delete=models.CASCADE)
+    stock_code = models.ForeignKey(StockCodeModel, on_delete=models.CASCADE, null=True)
     tr_id = models.CharField(default="", max_length=100)  # 요청한 tr_id
     rt_cd = models.CharField(default="", max_length=2)  # 성공여부
     msg_cd = models.CharField(default="", max_length=20)  # 응답코드
@@ -115,6 +115,7 @@ class StockInfoModel(models.Model):
     ocr_no = models.CharField(default="", max_length=10)  # OCR 번호
     crfd_item_yn = models.CharField(default="", max_length=10)  # 크라우드펀딩 종목여부
     elec_scty_yn = models.CharField(default="", max_length=10)  # 전자증권여부
+    updated_at = models.DateTimeField(auto_now=True)  # update time
 
 
 class StockPriceRealtimeModel(CommonModel):
