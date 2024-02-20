@@ -42,6 +42,6 @@ def load_data_from_excel(excel_path):
 
 
 # Excel 파일 경로
-excel_path = "korea_stock/stock_data.xlsx"
+excel_path = "data/stock_data.xlsx"
 
 load_data_from_excel(excel_path)

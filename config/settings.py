@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    # pip install django-extensions
+    # Django-extensions를 이용해 DB ERD, 엔티티 만들기
+    "django_extensions",
 ]
 
 CUSTOM_APPS = [
@@ -141,3 +144,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Django-extensions를 이용해 DB ERD, 엔티티 만들기
+GRAPH_MODELS = {
+    "all_applications": True,
+    "group_models": True,
+}

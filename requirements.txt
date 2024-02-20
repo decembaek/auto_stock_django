@@ -1,6 +1,7 @@
 mysqlclient
 django
 djangorestframework
+django-extension
 markdown
 openpyxl
 pandas

@@ -4,21 +4,48 @@ from common.models import CommonModel
 
 
 # Create your models here.
+
+
+# 테마코드
+# 테마명
+# 표준산업분류코드
+# 004 반도체/반도체장비	029460
+class KSICCodeModel(models.Model):
+    theme_code = models.CharField(default="", max_length=50)  # 테마코드
+    theme_name = models.CharField(default="", max_length=200)  # 테마명
+    ksic_code = models.CharField(
+        default="", max_length=50, primary_key=True
+    )  # 표준산업분류코드
+
+
+# 업종코드   업종명
+# 1001	01KOSDAQ
+class KisSectorModel(models.Model):
+    sector_code = models.CharField(
+        default="", max_length=50, primary_key=True
+    )  # 업종 코드
+    sector_name = models.CharField(default="", max_length=200)  # 업종명
+
+
+# 주식 종목 코드 모델
 class StockCodeModel(models.Model):
-    standard_code = models.CharField(default="", max_length=50)
-    code = models.CharField(default="", max_length=50, primary_key=True)
-    name = models.CharField(default="", max_length=100)
-    stock_name = models.CharField(default="", max_length=100)
-    en_name = models.CharField(default="", max_length=100)
-    stock_open_date = models.DateField()
-    market = models.CharField(default="", max_length=50)
-    stock_kind = models.CharField(default="", max_length=30)
-    affiliated = models.CharField(default="", max_length=30)
-    stock_type = models.CharField(default="", max_length=30)
-    face_value = models.DecimalField(max_digits=10, decimal_places=2)
-    total_stock_count = models.DecimalField(max_digits=20, decimal_places=2)
+    standard_code = models.CharField(default="", max_length=50)  # 표준코드
+    code = models.CharField(default="", max_length=50, primary_key=True)  # 단축코드
+    name = models.CharField(default="", max_length=100)  # 한글 종목명
+    stock_name = models.CharField(default="", max_length=100)  # 한글 종목약명
+    en_name = models.CharField(default="", max_length=100)  # 영문 종목명
+    stock_open_date = models.DateField()  # 상장일
+    market = models.CharField(default="", max_length=50)  # 시장 구분
+    stock_kind = models.CharField(default="", max_length=30)  # 증권 구분
+    affiliated = models.CharField(default="", max_length=30)  # 소속부
+    stock_type = models.CharField(default="", max_length=30)  # 주식종류
+    face_value = models.DecimalField(max_digits=10, decimal_places=2)  # 액면가
+    total_stock_count = models.DecimalField(
+        max_digits=20, decimal_places=2
+    )  # 상장주식수
 
 
+# 주식 기본 정보 모델
 class StockInfoModel(models.Model):
     stock_code = models.ForeignKey(StockCodeModel, on_delete=models.CASCADE, null=True)
     tr_id = models.CharField(default="", max_length=100)  # 요청한 tr_id
@@ -100,6 +127,9 @@ class StockInfoModel(models.Model):
     bfdy_clpr = models.CharField(default="", max_length=100)  # 전일종가
     clpr_chng_dt = models.CharField(default="", max_length=100)  # 종가변경일자
     std_idst_clsf_cd = models.CharField(default="", max_length=100)  # 표준산업분류코드
+    sstd_idst_clsf_code = models.ForeignKey(
+        KSICCodeModel, on_delete=models.CASCADE, null=True
+    )  # 표준산업분류코드 FK
     std_idst_clsf_cd_name = models.CharField(
         default="", max_length=300
     )  # 표준산업분류 코드명
