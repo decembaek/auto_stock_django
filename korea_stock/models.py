@@ -11,11 +11,9 @@ from common.models import CommonModel
 # 표준산업분류코드
 # 004 반도체/반도체장비	029460
 class KSICCodeModel(models.Model):
-    theme_code = models.CharField(default="", max_length=50)  # 테마코드
+    theme_code = models.CharField(default="", max_length=100)  # 테마코드
     theme_name = models.CharField(default="", max_length=200)  # 테마명
-    ksic_code = models.CharField(
-        default="", max_length=50, primary_key=True
-    )  # 표준산업분류코드
+    ksic_code = models.CharField(default="", max_length=100)  # 표준산업분류코드
 
 
 # 업종코드   업종명
