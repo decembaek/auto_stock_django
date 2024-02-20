@@ -15,10 +15,12 @@
 
 # 데이터베이스 형태 
 ##  korea_stock 모델
+### 모델 한글명 : 모델명 (현 상황) 작업여부
 업종 섹터 코드 : KisSectorModel (데이터 추가 완료) O
 표준산업분류코드, 테마코드 : KSICodeModel (데이터 추가 완료) O
 주식종목코드 모델 : StockCodeModel (데이터 추가 완료) O
 주식정보 모델 : StockInfoModel (데이터 추가 예정) X
+주식가격 실시간 모델 : StockPriceRealtimeModel (미완성, 구조 고민 필요) X
 ### 추후 추가 모델 
 주식 Stock 년, 월, 일, 분 봉 기준으로 데이터 저장 모델
 벡테스팅 기록 모델
