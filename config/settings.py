@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = [
 CUSTOM_APPS = [
     "korea_stock.apps.KoreaStockConfig",
     "common.apps.CommonConfig",
+    "users.apps.UsersConfig",
 ]
 
 SYSTEM_APPS = [
@@ -126,9 +127,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+# LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+# TIME_ZONE = "UTC"
+LANGUAGE_CODE = "ko-kr"
+
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
@@ -151,3 +155,6 @@ GRAPH_MODELS = {
     "all_applications": True,
     "group_models": True,
 }
+
+# Auth 사용자 유저 커스텀
+AUTH_USER_MODEL = "users.User"
