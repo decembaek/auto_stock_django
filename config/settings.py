@@ -41,6 +41,7 @@ CUSTOM_APPS = [
     "korea_stock.apps.KoreaStockConfig",
     "common.apps.CommonConfig",
     "users.apps.UsersConfig",
+    "mock_invest.apps.MockInvestConfig",
 ]
 
 SYSTEM_APPS = [
@@ -157,4 +158,4 @@ GRAPH_MODELS = {
 }
 
 # Auth 사용자 유저 커스텀
-AUTH_USER_MODEL = "users.User"
+# AUTH_USER_MODEL = "users.User"
