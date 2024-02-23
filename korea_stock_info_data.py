@@ -48,7 +48,7 @@ token_body = {
 }
 
 # TOKEN 발급이 필요하면 True로 하기
-token_bool = False
+token_bool = True
 
 if token_bool:
     token_res = requests.post(

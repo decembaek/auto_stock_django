@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -102,9 +105,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 HOST = os.environ.get("HOST")
-NAME = os.environ.get("NAME")
-USER = os.environ.get("USER")
-PORT = os.environ.get("PORT")
+# NAME = os.environ.get("NAME")
+# USER = os.environ.get("USER")
 PASSWORD = os.environ.get("PASSWORD")
 
 # DATABASES = {
@@ -121,11 +123,11 @@ PASSWORD = os.environ.get("PASSWORD")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": NAME,
-        "USER": USER,
+        "NAME": "aws_stock",
+        "USER": "admin",
         "PASSWORD": PASSWORD,
         "HOST": HOST,
-        "PORT": PORT,
+        "PORT": "3306",
     }
 }
 
@@ -180,6 +182,11 @@ GRAPH_MODELS = {
     "all_applications": True,
     "group_models": True,
 }
-
+# Celery가 장고 프로젝트를 자동으로 인식할 수 있도록 설정합니다.
+CELERY_IMPORTS = [
+    "korea_stock.tasks",
+]
 # Auth 사용자 유저 커스텀
 AUTH_USER_MODEL = "users.User"
+# settings.py
+CELERY_BROKER_URL = "redis://localhost:6379/0"  # Redis를 사용하는 경우

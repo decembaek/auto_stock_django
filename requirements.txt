@@ -9,5 +9,9 @@ pyarrow
 django-environ
 pylint-django
 python-dotenv
+pymysql
+asyncio
+# celery
+# redis
 #pip install celery
 #pip install redis pip install django-redis

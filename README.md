@@ -44,3 +44,10 @@
 2. 벡테스팅 기록 모델
 3. 모의투자 계좌 관리 모델
 4. 유저 정보 모델
+
+================================================
+## celery 명령어 
+celery -A korea_stock worker --loglevel=info
+## Redis Docker 구현 
+docker run -d -p 6379:6379 redis
+
