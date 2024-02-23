@@ -2,8 +2,9 @@ from django.db import models
 from django.conf import settings
 from common.models import CommonModel
 
+from korea_stock.models import StockCodeModel
 
-# Create your models here.
+
 # 모의투자 계좌
 class MockInvestAccount(CommonModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # 유저
@@ -19,46 +20,27 @@ class StockPostion(CommonModel):
     account = models.ForeignKey(
         MockInvestAccount, on_delete=models.CASCADE
     )  # 모의투자 계좌
+    stock = models.ForeignKey(StockCodeModel, on_delete=models.CASCADE)  # 주식 코드
+    stock_counts = models.PositiveIntegerField()  # 보유 주식 계수
+    average_buy_price = models.DecimalField(
+        max_digits=20, decimal_places=2
+    )  # 주식 평균 매입가격
 
 
-# from django.db import models
-# from django.conf import settings
-
-# class MockInvestmentAccount(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='investment_accounts')
-#     account_name = models.CharField(max_length=100)
-#     initial_balance = models.DecimalField(max_digits=15, decimal_places=2)
-#     current_balance = models.DecimalField(max_digits=15, decimal_places=2)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return f"{self.account_name} - {self.user.username}"
-
-# class StockPosition(models.Model):
-#     account = models.ForeignKey(MockInvestmentAccount, on_delete=models.CASCADE, related_name='positions')
-#     stock = models.ForeignKey('StockCodeModel', on_delete=models.CASCADE)
-#     quantity = models.PositiveIntegerField()
-#     average_buy_price = models.DecimalField(max_digits=10, decimal_places=2)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return f"{self.stock.stock_code} - {self.quantity} shares"
-
-# class Transaction(models.Model):
-#     TRANSACTION_TYPE_CHOICES = [
-#         ('BUY', 'Buy'),
-#         ('SELL', 'Sell'),
-#     ]
-
-#     account = models.ForeignKey(MockInvestmentAccount, on_delete=models.CASCADE, related_name='transactions')
-#     stock = models.ForeignKey('StockCodeModel', on_delete=models.CASCADE)
-#     transaction_type = models.CharField(max_length=4, choices=TRANSACTION_TYPE_CHOICES)
-#     quantity = models.PositiveIntegerField()
-#     price_per_share = models.DecimalField(max_digits=10, decimal_places=2)
-#     transaction_date = models.DateTimeField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return f"{self.transaction_type} - {self.stock.stock_code} - {self.quantity} shares"
+# 주식 거래 발생
+class Transaction(CommonModel):
+    TRANSACTION_TYPE_CHOICES = [
+        ("BUY", "BUY"),
+        ("SELL", "SELL"),
+    ]
+    account = models.ForeignKey(
+        MockInvestAccount, on_delete=models.CASCADE
+    )  # 모의투자 계좌
+    stock = models.ForeignKey(StockCodeModel, on_delete=models.CASCADE)  # 주식 코드
+    transaction_type = models.CharField(
+        max_length=4, choices=TRANSACTION_TYPE_CHOICES
+    )  # 매수, 매도 여부
+    quantity = models.PositiveIntegerField()  # 거래된 주식의 수량
+    price_per_share = models.DecimalField(
+        max_digits=20, decimal_places=2
+    )  # 주당 거래 가격
