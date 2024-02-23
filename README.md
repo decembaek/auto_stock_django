@@ -33,6 +33,7 @@
 #### 업종 섹터 코드 : KisSectorModel (데이터 추가 완료) O
 #### 표준산업분류코드, 테마코드 : KSICodeModel (데이터 추가 완료) O
 #### 주식종목코드 모델 : StockCodeModel (데이터 추가 완료) O
+#### 유저 모델 : User (모델 코딩 완료) O 
 #### 주식정보 모델 : StockInfoModel (데이터 추가 예정) X
 #### 주식가격 실시간 모델 : StockPriceRealtimeModel (미완성, 구조 고민 필요) X
 

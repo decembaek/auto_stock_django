@@ -1,12 +1,16 @@
 from django.db import models
 from django.conf import settings
 from common.models import CommonModel
+from tournament.models import Tournament
 
 from korea_stock.models import StockCodeModel
 
 
 # 모의투자 계좌
 class MockInvestAccount(CommonModel):
+    tournament = models.ForeignKey(
+        Tournament, on_delete=models.CASCADE, null=True, blank=True
+    )  # 토너먼트
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # 유저
     account_name = models.CharField(max_length=100)  # 계좌 이름
     initial_balance = models.DecimalField(
