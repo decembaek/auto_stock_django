@@ -46,8 +46,11 @@
 4. 유저 정보 모델
 
 ================================================
+### celery 현재 사용 안함
 ## celery 명령어 
 celery -A korea_stock worker --loglevel=info
 ## Redis Docker 구현 
 docker run -d -p 6379:6379 redis
 
+## 비동기 명령어 추가
+python manage.py run_async_tasks
