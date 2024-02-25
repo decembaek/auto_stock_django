@@ -108,28 +108,45 @@ HOST = os.environ.get("HOST")
 # NAME = os.environ.get("NAME")
 # USER = os.environ.get("USER")
 PASSWORD = os.environ.get("PASSWORD")
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "auto-stock",
-#         "USER": "root",
-#         "PASSWORD": "",
-#         "HOST": "127.0.0.1",
-#         "PORT": "13306",
-#     }
-# }
+DOCKER_PASSWORD = os.environ.get("DOCKER_PASSWORD")
 
 DATABASES = {
     "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "aws_stock_match",
+        "USER": "root",
+        "PASSWORD": DOCKER_PASSWORD,
+        "HOST": "127.0.0.1",
+        "PORT": "13306",
+    },
+    "docker_mysql": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "aws_stock_match",
+        "USER": "root",
+        "PASSWORD": DOCKER_PASSWORD,
+        "HOST": "127.0.0.1",
+        "PORT": "13306",
+    },
+    "aws_mysql": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "aws_stock",
         "USER": "admin",
         "PASSWORD": PASSWORD,
         "HOST": HOST,
         "PORT": "3306",
-    }
+    },
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "aws_stock",
+#         "USER": "admin",
+#         "PASSWORD": PASSWORD,
+#         "HOST": HOST,
+#         "PORT": "3306",
+#     }
+# }
 
 
 # Password validation

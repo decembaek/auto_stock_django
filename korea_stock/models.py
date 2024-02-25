@@ -150,22 +150,39 @@ class StockPriceRealtimeModel(CommonModel):
     pass
 
 
-# class StockPriceHistory(models.Model):
-#     stock = models.ForeignKey(
-#         "StockCodeModel", on_delete=models.CASCADE, related_name="price_history"
-#     )
-#     date = models.DateField()
-#     open_price = models.DecimalField(max_digits=10, decimal_places=2)
-#     high_price = models.DecimalField(max_digits=10, decimal_places=2)
-#     low_price = models.DecimalField(max_digits=10, decimal_places=2)
-#     close_price = models.DecimalField(max_digits=10, decimal_places=2)
-#     volume = models.BigIntegerField()
+class StockPriceHistory(models.Model):
+    PERIOD_CHOICES = [
+        ("D", "Daily"),
+        ("W", "Weekly"),
+        ("M", "Monthly"),
+        ("Y", "Yearly"),
+    ]
+    stock = models.ForeignKey(
+        StockCodeModel, on_delete=models.CASCADE
+    )  # 주식 종목 코드
+    period = models.CharField(max_length=1, choices=PERIOD_CHOICES)  # 기간: 일/주/월/년
+    date = models.DateField()  # 해당 기간 날짜
+    time = models.TimeField(
+        null=True, blank=True
+    )  # 해당 기간 시간(분 단위 일때만 사용할듯)
+    open_price = models.DecimalField(max_digits=20, decimal_places=2)  # 주식 시가
+    close_price = models.DecimalField(max_digits=20, decimal_places=2)  # 주식 종가
+    high_price = models.DecimalField(max_digits=20, decimal_places=2)  # 주식 최고가
+    low_price = models.DecimalField(max_digits=20, decimal_places=2)  # 주식 죄저가
+    volume = models.BigIntegerField()  # 거래량
+    accumulate_money = models.DecimalField(max_digits=30, decimal_places=2)  # 거래 대금
+    flng_cls_code = models.CharField(default="", max_length=30)  # 락 구분 코드
+    prtt_rate = models.CharField(default="", max_length=30)  # 분할 비율
+    mod_yn = models.CharField(default="", max_length=30)  # 분할변경여부
+    prdy_vrss_sign = models.CharField(default="", max_length=30)  # 전일 대비 부호
+    prdy_vrss = models.CharField(default="", max_length=30)  # 전일 대비 변화량
+    revl_issu_reas = models.CharField(default="", max_length=30)  # 재평가사유코드
 
-#     class Meta:
-#         indexes = [
-#             models.Index(fields=["date"]),
-#         ]
-#         unique_together = ("stock", "date")
+    # class Meta:
+    #     indexes = [
+    #         models.Index(fields=["date"]),
+    #     ]
+    #     unique_together = ("stock", "date")
 
-#     def __str__(self):
-#         return f"{self.stock} on {self.date}"
+    # def __str__(self):
+    #     return f"{self.stock} on {self.date}"

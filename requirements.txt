@@ -11,6 +11,7 @@ pylint-django
 python-dotenv
 pymysql
 asyncio
+cryptography
 # celery
 # redis
 #pip install celery
