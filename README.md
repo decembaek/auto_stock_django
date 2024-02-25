@@ -1,5 +1,13 @@
 # 작성 블로그
+- 기획 및 계획 
 https://wingyu-story.tistory.com/130
+- 주식 종목 코드 및 섹터 데이터 가져오기 
+https://wingyu-story.tistory.com/131
+- DB 데이터 베이스 서버 구축하기
+https://wingyu-story.tistory.com/132
+
+
+
 # 투자 및 금융에 대한 프로젝트
 1. 한국주식 정보 수집 (완료)
 2. 한국 업종 및 관련 데이터 수집 (완료)
