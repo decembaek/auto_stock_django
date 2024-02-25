@@ -71,10 +71,10 @@ class StockInfoModel(models.Model):
     scts_mket_lstg_abol_dt = models.CharField(
         default="", max_length=50
     )  # 유가증권시장 상장폐지 일자
-    kosdap_mket_lstg_dt = models.CharField(
+    kosdaq_mket_lstg_dt = models.CharField(
         default="", max_length=50
     )  # 코스닥 시장 상장 일자
-    kosdap_mket_lstg_abol_dt = models.CharField(
+    kosdaq_mket_lstg_abol_dt = models.CharField(
         default="", max_length=50
     )  # 코스닥 시장 상장 폐지 일자
     frbd_mket_lstg_dt = models.CharField(
@@ -85,7 +85,7 @@ class StockInfoModel(models.Model):
     )  # 프로비도시장 상장폐지 일자
     reits_kind_cd = models.CharField(default="", max_length=50)  # 리츠종류코드
     etf_dvsn_cd = models.CharField(default="", max_length=50)  # ETF구분코드
-    oilf_find_yn = models.CharField(default="", max_length=50)  # 유전펀드여부
+    oilf_fund_yn = models.CharField(default="", max_length=50)  # 유전펀드여부
     idx_bztp_lcls_cd = models.CharField(
         default="", max_length=50
     )  # 지수업종대부류 코드
@@ -120,7 +120,7 @@ class StockInfoModel(models.Model):
         default="", max_length=100
     )  # 당사 대용가격 변경일자
     tr_stop_yn = models.CharField(default="", max_length=100)  # 거래 정지여부
-    admin_item_yn = models.CharField(default="", max_length=100)  # 관리종목여부
+    admn_item_yn = models.CharField(default="", max_length=100)  # 관리종목여부
     thdt_clpr = models.CharField(default="", max_length=100)  # 당일종가
     bfdy_clpr = models.CharField(default="", max_length=100)  # 전일종가
     clpr_chng_dt = models.CharField(default="", max_length=100)  # 종가변경일자
