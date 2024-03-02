@@ -208,3 +208,6 @@ while True:
     else:
         # 다음 반복을 위해 all_data_up_to_date를 다시 True로 설정
         all_data_up_to_date = True
+
+
+## 마지막달 조회가 02-29로 나오고 현재 날짜 3월2일이라서 무한 루트돔, 방법 찾아보기
